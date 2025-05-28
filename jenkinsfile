@@ -23,7 +23,7 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                bat '''
+                bat """
                 echo Listing directory contents before build:
                 dir /a
                 
@@ -39,7 +39,7 @@ pipeline {
 
                 echo Listing directory contents after build:
                 dir /a
-                '''
+                """
             }
         }
     }
