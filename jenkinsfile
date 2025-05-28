@@ -1,15 +1,44 @@
-pipeline{
-    agent any 
-    stages{
-        stage("Build"){
+// pipeline{
+//     agent any 
+//     stages{
+//         stage("Build"){
+//             steps {
+//                 bat '''
+//                 dir -/a
+//                 node --version
+//                 npm --version
+//                 npm ci
+//                 npm run build
+//                 dir -/a
+//                 '''
+//             }
+//         }
+//     }
+// }
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage("Build") {
             steps {
                 bat '''
-                dir -/a
+                echo Listing directory contents before build:
+                dir /a
+                
+                echo Checking Node and NPM versions:
                 node --version
                 npm --version
+
+                echo Installing dependencies:
                 npm ci
+
+                echo Running build script:
                 npm run build
-                dir -/a
+
+                echo Listing directory contents after build:
+                dir /a
                 '''
             }
         }
