@@ -49,7 +49,7 @@ pipeline {
                     ) ELSE (
                         echo build/index.html does not exist.
                     )
-                    npm test
+                    npm test -- --watchAll=false
                 '''
             }
         }
