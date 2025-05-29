@@ -30,15 +30,6 @@ pipeline {
                 echo Checking Node and NPM versions:
                 node --version
                 npm --version
-
-                echo Installing dependencies:
-                npm ci
-
-                echo Running build script:
-                npm run build
-
-                echo Listing directory contents after build:
-                dir /a
                 """
             }
         }
