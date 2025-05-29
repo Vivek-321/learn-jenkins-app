@@ -38,7 +38,7 @@ pipeline {
             agent any
 
             steps {
-                sh '''
+                bat '''
                     #test -f build/index.html
                     npm test
                 '''
