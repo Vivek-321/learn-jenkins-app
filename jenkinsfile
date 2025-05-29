@@ -30,16 +30,25 @@ pipeline {
                 echo Checking Node and NPM versions:
                 node --version
                 npm --version
+
+                echo Installing dependencies:
+                npm ci
+
+                echo Building the app:
+                npm run build
                 """
             }
         }
 
         stage("Test") {
-            agent any
-
             steps {
                 bat '''
-                    #test -f build/index.html
+                    REM Check if build/index.html exists
+                    IF EXIST build\\index.html (
+                        echo build/index.html exists.
+                    ) ELSE (
+                        echo build/index.html does not exist.
+                    )
                     npm test
                 '''
             }
